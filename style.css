@@ -1,0 +1,280 @@
+.shv-newday {
+    clear: both;
+    border-collapse: collapse;
+    display: table;
+    width: 100%;
+}
+.shv-clear {
+    clear: both;
+}
+
+.shv-datum-container {
+    padding: 5px;
+    background: rgb(236, 190, 62);
+    clear: both;
+    margin-top: 5px;
+}
+
+.shv-spiel-container {
+    display: table-row;
+    border-bottom: 1px solid rgb(37, 76, 155);
+    width: 100%;
+}
+
+.shv-spiel-container:nth-child(even) {
+    background:#254c9b1c
+}
+
+.shv-cell-container {
+    display: table-cell;
+    width: 16%;
+}
+
+.shv-spiele-titel {
+    display: table-cell;
+    padding: 5px;
+    width: 40px;
+    font-weight: bold;
+    
+}
+
+.shv-Resultate-titel {
+    display: table-cell;
+    padding: 5px;
+    width: 40px;
+    font-weight: bold;
+    
+}
+
+.shv-title-row {
+    display: table-row;
+    border-bottom: 2px solid rgb(37, 76, 155);
+}
+
+.shv-spiele-col {
+    display: table-cell;
+}
+.shv-spiele-after {
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+span.shv-spiele-span {
+    display: none;
+}
+a.statslink {
+	font-family: 'Genericons';
+	text-decoration: inherit;
+	font-weight: normal;
+	font-style: normal;
+	vertical-align: text-bottom;
+	color: rgb(51, 87, 162);
+	content: '\f442';
+	font-size: x-large;
+}
+a.statslink:before{
+	content: '\f442';
+}
+
+/* Acordeon styles */
+.tab {
+  position: relative;
+  margin-bottom: 1px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+input.accordion-input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.ranglisten-label {
+  position: relative;
+  display: block;
+  padding: 0 0 0 1em;
+  background: rgb(37, 76, 155);
+  font-weight: bold;
+  line-height: 3;
+  cursor: pointer;
+}
+.blue label {
+  background: #2980b9;
+}
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  background: rgb(255, 255, 255);
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+}
+
+.tab-content label {
+color: black;
+}
+
+.blue .tab-content {
+  background: #3498db;
+}
+.tab-content p {
+  margin: 1em;
+}
+/* :checked */
+input:checked ~ .tab-content {
+  max-height: 100em;
+}
+/* Icon */
+.ranglisten-label::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+input[type=checkbox] + label::after {
+  content: "+";
+}
+input[type=radio] + label::after {
+  content: "\25BC";
+}
+input[type=checkbox]:checked + label::after {
+  transform: rotate(315deg);
+}
+input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+}
+.rangliste {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+.rangliste-header {
+    display: table-header-group;
+    background: rgb(236, 190, 62);
+    color: rgb(0, 0, 0);
+    padding: 5px;
+}
+.rangliste-row {
+    display: table-header-group;
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid black;
+}
+
+.rangliste-header span {
+    display: table-cell;
+    padding: 5px;
+}
+.rangliste-row span {
+    display: table-cell;
+    padding: 5px;
+}
+[data-team~=ATV\/KV] {
+	color: red;
+}
+
+.spielerliste-container {
+	overflow: auto;
+}
+.spielerliste {
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.title-row {
+	display: table-row;
+}
+
+span.table-cell {
+	display: table-cell;
+	padding-left: 2px;
+	padding-right: 2px;
+	/* width: 5%; */
+}
+span.table-cell:nth-child(2) {
+	display: table-cell;
+	padding-left: 2px;
+	padding-right: 2px;
+	/* width: 0%; */
+	text-align:left;
+}
+span.table-cell {
+	text-align:center
+}
+span.table-cell:first-child {
+	text-align:left;
+}
+
+.table-row {
+	display: table-row;
+
+}
+.table-row:last-child {
+	display: table-row;
+	background:#ecbe3e;
+}
+
+a.calfeed:before {
+    font-family: 'Genericons';
+    content: '\f413';
+    margin-right: 3px;
+}
+a.calfile:before {
+    font-family: 'Genericons';
+    content: '\f50b';
+    margin-right: 3px;
+}
+
+a.calfeed {
+    border-right: 2px solid #243673;
+    padding-right: 4px;
+}
+
+@media only screen and (max-width: 30em){
+.shv-spiel-container {
+    display: table;
+    border-bottom: 1px solid rgb(37, 76, 155);
+    width: 100%;
+}
+
+
+.shv-title-row {
+    display: none;
+    border-bottom: 2px solid rgb(37, 76, 155);
+}
+.shv-cell-container {
+    display: table-row;
+}
+span.shv-spiele-span {
+    display: table-cell;
+    width: 21%;
+    padding-left: 5px;
+}
+.shv-spiele-after {
+    padding-left: 5px;
+    padding-right: 5px;
+    display: table-cell;
+    width: 77%;
+}
+span.rangliste-tore {
+    display: none;
+}
+span.table-cell.hide {
+	display: none;
+}
+
+a.calfeed {
+    border-right: 2px none #243673;
+    padding-right: 4px;
+}
+a.calfile {
+    float: left;
+}
+}

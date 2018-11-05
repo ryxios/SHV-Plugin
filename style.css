@@ -221,6 +221,11 @@ span.table-cell:first-child {
 	background:#ecbe3e;
 }
 
+select.teamid {
+	float: left;
+    margin-right: 5px;
+}
+
 a.calfeed:before {
     font-family: 'Genericons';
     content: '\f413';
@@ -235,6 +240,27 @@ a.calfile:before {
 a.calfeed {
     border-right: 2px solid #243673;
     padding-right: 4px;
+}
+
+@media only screen and (max-width: 60em){
+select.teamid{
+    border: 1px solid black;
+    border-radius: 0;
+    margin-bottom: 5px;
+    float: none;
+    }
+
+a.calfeed {
+    border-right: 2px solid #243673;
+    padding-right: 4px;
+    float: left;
+    margin-bottom: 5px;
+}
+a.calfile {
+    float: left;
+    margin-bottom: 5px;
+}
+
 }
 
 @media only screen and (max-width: 30em){
@@ -270,11 +296,20 @@ span.table-cell.hide {
 	display: none;
 }
 
+select.teamid{
+    border: 1px solid black;
+    border-radius: 0;
+    margin-bottom: 5px;
+    }
+
 a.calfeed {
     border-right: 2px none #243673;
     padding-right: 4px;
+    float: left;
+    margin-bottom: 5px;
 }
 a.calfile {
     float: left;
+    margin-bottom: 5px;
 }
 }

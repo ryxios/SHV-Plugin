@@ -654,8 +654,23 @@ if(array_key_exists('teamid', $atts)){
 settype($count, "integer");
 	if($calendar == "true"){
 	if ($resultat === false){
-	$shvSpielplanoutput = "<div class='cal-link'>";
-	$shvSpielplanoutput .= "<a class='calfeed' href='webcal://www." .  $domain . "/feed/kalender.ics?team=" . $atts[ 'teamid' ] ."'>Im Kalender abonnieren</a>";
+	global $wpdb;
+	$teamsjson = $wpdb->get_row("SELECT * FROM wp_shv_plugin WHERE name = 'Teams'");
+	$teamsphp = json_decode(json_encode($teamsjson), True);
+	$teams = json_decode ($teamsphp['data'], true);
+//print_r($teams);
+	$shvSpielplanoutput = "<select class='teamid' onchange='newlink = document.getElementsByClassName(\"teamid\")[0].value; link = document.getElementsByClassName(\"calfeed\"); link2 = document.getElementsByClassName(\"calfile\"); link[0].href = newlink; var newlink2 = newlink.replace(\"webcal\", \"http\"); link2[0].href = newlink2;'>";
+	$shvSpielplanoutput .= "<option value='webcal://www." .  get_site_url() . "/feed/kalender.ics?team=alle'>Ganzer Verein</option>";
+	foreach($teams as $team){
+	if($team['teamId'] == $atts[ 'teamid' ]){
+	$shvSpielplanoutput .= "<option value='webcal://www." .  $domain . "/feed/kalender.ics?team=" . $team[ 'teamId' ] ."' selected>" . $team['groupText']. " " . $team['teamName'] . "</option>";
+	}else{
+		$shvSpielplanoutput .= "<option value='webcal://www." .  $domain . "/feed/kalender.ics?team=" . $team[ 'teamId' ] ."'>" . $team['groupText']. " " . $team['teamName'] . "</option>";
+	}
+	}
+	$shvSpielplanoutput .= "</select>";
+	$shvSpielplanoutput .= "<div class='cal-link'>";
+	$shvSpielplanoutput .= "<a class='calfeed' href='webcal://www." .  $domain . "/feed/kalender.ics?team=" . $atts[ 'teamid' ] ."'>Kalender abonnieren</a>";
 	$shvSpielplanoutput .= " <a class='calfile' href='" .  get_site_url() . "/feed/kalender.ics?team=" . $atts[ 'teamid' ] ."'>Kalenderdatei herunterladen</a>";
 	$shvSpielplanoutput .= "</div>";
 	$shvSpielplanoutput .= "<div class='Resultate-list'>";

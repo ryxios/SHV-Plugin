@@ -23,7 +23,7 @@ add_action( 'init', 'load_files' );
 function load_files(){
     wp_register_style('shv_spielplan_widget', plugins_url('style.css',__FILE__ ));
     wp_enqueue_style('shv_spielplan_widget');
-    add_action( 'wp_head', 'shvcustomcss');	
+    add_action( 'wp_head', 'shvcustomcss');
 }
 function shv_plugin_add_pages() {
 	// Add a new top-level menu (ill-advised):
@@ -33,13 +33,13 @@ function shv_plugin_add_pages() {
 }
 // mt_toplevel_page() displays the page content for the custom Test Toplevel menu
 function shv_plugin_toplevel_page() {
-    //must check that the user has the required capability 
+    //must check that the user has the required capability
     if (!current_user_can('manage_options'))
     {
       wp_die( __('You do not have sufficient permissions to access this page.') );
     }
-    
-    // variables for the field and option names 
+
+    // variables for the field and option names
     $opt_name = 'vereinsId';
     $opt2_name = 'update';
     $opt3_name = 'auth';
@@ -47,7 +47,7 @@ function shv_plugin_toplevel_page() {
     $opt5_name = 'farbe2';
     $opt6_name = 'farbe3';
     $opt7_name = 'calendar';
-    
+
     $hidden_field_name = 'vereinsiD_hidden';
     $hidden_field2_name = 'fetch_teams_hidden';
     $hidden_field3_name = 'fetch_spiele_hidden';
@@ -57,7 +57,7 @@ function shv_plugin_toplevel_page() {
     $hidden_field7_name = 'fetch_resultate_teams_hidden';
     $hidden_field8_name = 'shv_plugin_farben_hidden';
     $hidden_field9_name = 'shv_plugin_calendar_hidden';
-    
+
     $data_field_name = 'shv_plugin_vereinsId';
     $data_field2_name = 'shv_plugin_update';
     $data_field3_name = 'shv_plugin_auth';
@@ -101,7 +101,7 @@ function shv_plugin_toplevel_page() {
 <?php
 
     }
-    
+
         if( isset($_POST[ $hidden_field2_name ]) && $_POST[ $hidden_field2_name ] == 'Y' ) {
       fetch_teams();
       ?>
@@ -148,8 +148,8 @@ function shv_plugin_toplevel_page() {
     if( isset($_POST[ $hidden_field8_name ]) && $_POST[ $hidden_field8_name ] == 'Y' ) {
 	  $opt4_val = $_POST[ $data_field4_name ];
 	  $opt5_val = $_POST[ $data_field5_name ];
-	  $opt6_val = $_POST[ $data_field6_name ];  
-	    
+	  $opt6_val = $_POST[ $data_field6_name ];
+
       update_option( $opt4_name, $opt4_val );
       update_option( $opt5_name, $opt5_val );
       update_option( $opt6_name, $opt6_val );
@@ -168,21 +168,22 @@ function shv_plugin_toplevel_page() {
     echo "<h2>" . __( 'SHV-Plugin', 'menu-shv-plugin' ) . "</h2>";
 
     // settings form
-    
+
     ?>
+<div class="shvleft">
 <form name="form1" method="post" action="">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
 
-<p><?php _e("VereinsId:", 'menu-shv-plugin' ); ?> 
+<p><?php _e("VereinsId:", 'menu-shv-plugin' ); ?>
 <input type="text" name="<?php echo $data_field_name; ?>" value="<?php echo $opt_val; ?>" size="20">
 </p>
-<p><?php _e("Update (min):", 'menu-shv-plugin' ); ?> 
+<p><?php _e("Update (min):", 'menu-shv-plugin' ); ?>
 <input type="text" name="<?php echo $data_field2_name; ?>" value="<?php echo $opt2_val; ?>" size="20">
 </p>
-<p><?php _e("Auth:", 'menu-shv-plugin' ); ?> 
+<p><?php _e("Auth:", 'menu-shv-plugin' ); ?>
 <input type="text" name="<?php echo $data_field3_name; ?>" value="<?php echo $opt3_val; ?>" size="20">
 </p>
-<p><?php _e("Kalender:", 'menu-shv-plugin' ); ?> 
+<p><?php _e("Kalender:", 'menu-shv-plugin' ); ?>
 <input type="text" name="<?php echo $data_field7_name; ?>" value="<?php echo $opt7_val; ?>" size="20">
 </p>
 
@@ -240,6 +241,8 @@ function shv_plugin_toplevel_page() {
 <p><?php _e("Speichern:", 'menu-shv-plugin' ); ?> <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Speichern') ?>" /></p>
 <hr />
 </form>
+</div>
+<div class="shvright"
 <h3>Shortcodes:</h3>
 <p>[Spielplan spieltage=100 liga=1 resultat=0]</p>
 <p>[Spielplanteam spieltage=5 teamid=28138 liga=0 resultat=0]]</p>
@@ -248,6 +251,7 @@ function shv_plugin_toplevel_page() {
 <p>[Rangliste]</p>
 <p>[Ranglisteteam teamid=27984]</p>
 <p>[Spielerstats groupid= 1160 teamid=27983]</p>
+<p>[Kalenderurls]</p>
 <hr />
 <?php
 
@@ -258,9 +262,9 @@ $teamsphp = json_decode(json_encode($teamsjson), True);
 $teams = json_decode ($teamsphp['data'], true);
 $teamslist = "<div>";
 if ($teams == null){
-	
+
 $teamslist .= "<strong> Setup Plugin</strong>";
-	
+
 }else{
 	$teamslist .= "<ul style='display:table;border-collapse:collapse'>";
 	$teamslist .= "<li style='display:table-row;padding:5px;border: 1px solid black;'><span style='display:table-cell;padding:5px;border: 1px solid black;'>Teamname</span><span style='display:table-cell;padding-left:5px;padding:5px;border: 1px solid black;'>Gruppe</span><span style='display:table-cell;padding:5px;border: 1px solid black;'>TeamId</span><span style='display:table-cell;padding:5px;border: 1px solid black;'>GroupId</span></li>";
@@ -271,8 +275,9 @@ $teamslist .= "<strong> Setup Plugin</strong>";
 }
 $teamslist .= "</div>";
 ?>
-<h3>Teamslist:</h3> 
+<h3>Teamslist:</h3>
 <div><?php echo $teamslist; ?></div>
+</div>
 <?php
 }
 function shvcustomcss()

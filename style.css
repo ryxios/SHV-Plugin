@@ -27,7 +27,23 @@
 
 .shv-cell-container {
     display: table-cell;
-    width: 16%;
+    width: 30%;
+}
+
+.shv-cell-container.liga {
+    width: 12%;
+}
+
+.shv-cell-container.resultat {
+    width: 15%;
+}
+
+.shv-cell-container.zeit {
+    width: 10%;
+}
+
+.shv-cell-container.stats {
+    width: 10%;
 }
 
 .shv-spiele-titel {
@@ -35,7 +51,7 @@
     padding: 5px;
     width: 40px;
     font-weight: bold;
-    
+
 }
 
 .shv-Resultate-titel {
@@ -43,7 +59,7 @@
     padding: 5px;
     width: 40px;
     font-weight: bold;
-    
+
 }
 
 .shv-title-row {
@@ -103,7 +119,7 @@ input.accordion-input {
 }
 .tab-content {
   max-height: 0;
-  overflow: hidden;
+  overflow: scroll!important;
   background: rgb(255, 255, 255);
   -webkit-transition: max-height .35s;
   -o-transition: max-height .35s;
@@ -175,6 +191,21 @@ input[type=radio]:checked + label::after {
     display: table-cell;
     padding: 5px;
 }
+
+.promcan {
+    background-color: rgba(191, 245, 163, 0.6);
+}
+
+.dirprom {
+    background-color: rgba(93, 199, 27, 0.6);
+}
+.relcan {
+    background-color: rgba(245, 163, 163, 0.6);
+}
+.dirrel {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
 [data-team~=ATV\/KV] {
 	color: red;
 }
@@ -278,10 +309,12 @@ a.calfile {
 .shv-cell-container {
     display: table-row;
 }
+
 span.shv-spiele-span {
     display: table-cell;
     width: 21%;
     padding-left: 5px;
+    font-weight: bold;
 }
 .shv-spiele-after {
     padding-left: 5px;
@@ -289,6 +322,7 @@ span.shv-spiele-span {
     display: table-cell;
     width: 77%;
 }
+
 span.rangliste-tore {
     display: none;
 }

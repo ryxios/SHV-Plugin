@@ -829,7 +829,36 @@ function rangliste_team_shortcode($atts)
         $output = "<div>";
         $output .= "<div class='rangliste'><div class='rangliste-header'><span class='rangliste-rang'>R.</span><span class='rangliste-team'>Team</span><span class='rangliste-siege'>S/U/N</span><span class='rangliste-tore'>T+/TD/T-</span><span class='rangliste-siele'>Sp.</span><span class='rangliste-punkte'>Punkte</span></div>";
         foreach ($result[$teamId]['ranking'] as $rangliste) {
-                $output .= "<div class='rangliste-row'>";
+          $promcan = $result[$teamId]['promotionCandidate'];
+          $relcan = $result[$teamId]['relegationCandidate'];
+          $direl = $result[$teamId]['directRelegation'];
+          $dirprom = $result[$teamId]['directPromotion'];
+          $totalTeams = $result[$teamId]['totalTeams'];
+          $rank = $rangliste['rank'];
+          if($rank <= $dirprom){
+            if($dirprom < 1){
+              //nothing
+            }else{
+              $promstyle = "dirprom";
+            }
+          }else if(($dirprom < $rank) && ($rank <= $dirprom+$promcan)){
+            $promstyle = "promcan";
+          }else if (($totalTeams-$relcan <= $rank) && ($rank <= $totalTeams-$direl)) {
+            if($relcan < 1){
+              //nothing
+            }else{
+            $promstyle = "relcan";
+          }
+          }else if (($totalTeams-$direl < $rank)) {
+            if($direl < 1){
+              //nothing
+            }else{
+            $promstyle = "dirrel";
+          }
+          }else{
+            $promstyle = "nothing";
+          }
+                $output .= "<div class='rangliste-row " . $promstyle . "'>";
 								$output .= "<span class='rangliste-rang'>" . $rangliste['rank'] . "</span>";
 								$output .= "<span class='rangliste-team' data-team='" . $rangliste['teamName'] . "'>" . $rangliste['teamName'] . "</span>";
 								$output .= "<span class='rangliste-siege'>" . $rangliste['totalWins'] . "/" . $rangliste['totalDraws'] . "/" . $rangliste['totalLoss'] . "</span>";
@@ -837,7 +866,9 @@ function rangliste_team_shortcode($atts)
 								$output .= "<span class='rangliste-spiele'>" . $rangliste['totalGames'] . "</span><span class='rangliste-punkte'>" . $rangliste['totalPoints'] . "</span>";
 								$output .= "</div>";
         } //$result[$teamId]['ranking'] as $rangliste
-        $output .= "</div></div>";
+        $output .= "</div>";
+        $output .= "<div class='modus'>" . $result[$teamId]['modusHtml'] . "</div>";
+        $output .= "</div>";
         return $output;
 }
 function spieler_stats_shortcode($atts)

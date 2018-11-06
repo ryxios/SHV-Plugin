@@ -1,3 +1,15 @@
+.shvleft {
+    width: 30%;
+    float: left;
+    padding-right: 5px;
+}
+
+.shvright {
+    width: 66%;
+    float: right;
+    padding-left: 5px;
+}
+
 .shv-newday {
     clear: both;
     border-collapse: collapse;
@@ -206,6 +218,12 @@ input[type=radio]:checked + label::after {
     background-color: rgba(255, 0, 0, 0.6);
 }
 
+.modus {
+    font-size: smaller;
+    line-height: initial;
+    padding-top: 10px;
+}
+
 [data-team~=ATV\/KV] {
 	color: red;
 }
@@ -295,6 +313,17 @@ a.calfile {
 }
 
 @media only screen and (max-width: 30em){
+.shvleft {
+    width: 100%;
+    float: none;
+    padding-right: 5px;
+}
+
+.shvright {
+    width: 100%;
+    float: none;
+    padding-left: 0px;
+}
 .shv-spiel-container {
     display: table;
     border-bottom: 1px solid rgb(37, 76, 155);

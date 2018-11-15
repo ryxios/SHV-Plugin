@@ -3,7 +3,7 @@
 Plugin Name:  SHV-Plugin
 Plugin URI:   http://atvkv.ch
 Description:  Anzeige Daten von SHV API
-Version:      2.0
+Version:      2.1
 Author:       Joel Nowak
 Author URI:   http://atvkv.ch
 License:      GPL2
